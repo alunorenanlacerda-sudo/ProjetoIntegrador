@@ -35,7 +35,7 @@
      margin: 0px 0px 0px 5px;
  }
 nav a{text-decoration: none;}
-nav a: :hover{color: rgb(0, 0, 0);}
+nav a :hover{color: rgb(0, 0, 0);}
  position {
      color: rgb(0, 0, 0);
  }
@@ -43,3 +43,4 @@ nav a: :hover{color: rgb(0, 0, 0);}
  main {
      color: white;
  }
+ 
