@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agendamento de Serviço</title>
-    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="css/teste.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agendamento de Serviço</title>
+  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="css/teste.css">
 </head>
 <body>
-    <header class="site-header">
+  <header class="site-header">
         <div class="header-inner">
             <a class="brand" href="index.html" aria-label="Jacaré Mecânica e Auto Peças — Página Inicial">
             <img src="img/logo2.png" alt="Logotipo Jacaré" class="brand-logo">
@@ -27,7 +27,86 @@
         </div>
     </header>
     <main>
-        
+        <section class="agendamento-form-container">
+            <h1>Agende Seu Serviço na Jacaré Mecânica</h1>
+            <p>Preencha os dados abaixo e entraremos em contato para confirmar a data e hora. **Seu agendamento só é válido após nossa confirmação.**</p>
+            
+            <form action="#" method="POST" class="agendamento-form"> 
+                
+                <fieldset>
+                    <legend>Dados Pessoais e de Contato</legend>
+                    <div class="form-group">
+                        <label for="nome">Nome Completo:</label>
+                        <input type="text" id="nome" name="nome" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="telefone">Telefone (WhatsApp):</label>
+                        <input type="tel" id="telefone" name="telefone" pattern="[0-9]{2} [0-9]{4,5}-[0-9]{4}" placeholder="Ex: 32 99999-9999" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-mail:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Dados do Veículo</legend>
+                    <div class="form-group">
+                        <label for="marca">Marca:</label>
+                        <input type="text" id="marca" name="marca" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="modelo">Modelo:</label>
+                        <input type="text" id="modelo" name="modelo" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="ano">Ano (Opcional):</label>
+                        <input type="number" id="ano" name="ano" min="1900" max="2099">
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Serviço Desejado</legend>
+                    <div class="form-group">
+                        <label for="servico">Tipo de Serviço Principal:</label>
+                        <select id="servico" name="servico" required>
+                            <option value="">Selecione um serviço</option>
+                            <option value="freios">Freios e Sistemas de Segurança</option>
+                            <option value="suspensao">Suspensão</option>
+                            <option value="oleo">Troca de Óleo e Filtro</option>
+                            <option value="diagnostico_motor">Diagnóstico e Teste de Motor</option>
+                            <option value="eletrica">Elétrica e Eletrônica (Bateria, Falhas)</option>
+                            <option value="iluminacao">Iluminação (Faróis e Lâmpadas)</option>
+                            <option value="pneus">Pneus (Alinhamento/Balanceamento/Troca)</option>
+                            <option value="revisao_geral">Revisão Geral / Checklist</option>
+                            <option value="outro">Outro Serviço (Detalhar abaixo)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="detalhes">Detalhes do Serviço / Observações:</label>
+                        <textarea id="detalhes" name="detalhes" rows="4" placeholder="Ex: O carro está fazendo barulho no freio ao virar à direita..."></textarea>
+                    </div>
+                </fieldset>
+                
+                <fieldset>
+                    <legend>Preferência de Data e Horário</legend>
+                    <div class="form-group">
+                        <label for="data_preferida">Data Preferida:</label>
+                        <input type="date" id="data_preferida" name="data_preferida" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="hora_preferida">Horário Preferido:</label>
+                        <input type="time" id="hora_preferida" name="hora_preferida" min="08:00" max="17:00" step="900" required>
+                        <small>Horário de Atendimento: 8:00 às 17:00</small>
+                    </div>
+                </fieldset>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn-submit">Enviar Pedido de Agendamento</button>
+                </div>
+            </form>
+        </section>
     </main>
     <footer class="site-footer">
   <div class="footer-inner">
@@ -60,4 +139,4 @@
   </div>
 </footer>
 </body>
-</html>  
+</html>

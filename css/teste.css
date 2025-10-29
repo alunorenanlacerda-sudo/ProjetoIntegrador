@@ -19,17 +19,29 @@
 
 
 */
+/*
+ * ========================================
+ * VARIAVEIS GLOBAIS (ROOT) E RESET
+ * ========================================
+*/
 :root{
-  --brand-dark: #1B1A1E;      /* cor principal escura da marca */
-  --brand-accent: #C03228;    /* vermelho acento (detalhes, botões) */
-  --brand-green: #2A3C30;     /* verde jacaré (opcional, uso em hover/detalhes) */
-  --bg: #FFFFFF;              /* fundo principal */
-  --bg-light: #F1F1F1;        /* fundo alternativo */
-  --text: #1B1A1E;            /* texto principal */
-  --muted: #6B6B6B;           /* texto secundário */
+  /* Cores Principais da Marca */
+  --brand-dark: #1B1A1E;      /* Preto/Cinza Escuro */
+  --brand-accent: #C03228;    /* Vermelho acento (detalhes, botões) */
+  --brand-header-bg: #109951; /* Verde forte (usado no header) */
+  
+  /* Cores de Fundo e Texto */
+  --bg: #FFFFFF;              /* Fundo principal (branco) */
+  --bg-light: #F1F1F1;        /* Fundo alternativo (cinza claro) */
+  --text: #1B1A1E;            /* Texto principal */
+  --muted: #6B6B6B;            /* Texto secundário */
+  
+  /* Layout e Espaçamento */
   --max-width: 1100px;
-  --gap: 1rem;
+  --gap: 1.5rem;
+  --padding-main: 1.5rem;
 }
+
 /* Reset / base */
 *{ box-sizing: border-box; }
 body{
@@ -37,13 +49,45 @@ body{
   color: var(--text);
   background: var(--bg);
   margin: 0;
-  line-height: 1.4;
+  line-height: 1.6; /* Aumentado para melhor legibilidade */
 }
 
-/* ===== Header estilizado (flex + responsivo) ===== */
+/* ========================================
+ * BOTÕES E LINKS GERAIS
+ * ========================================
+*/
+.btn-agendamento,
+.btn { 
+  display: inline-block;
+  background: var(--brand-accent);
+  color: var(--bg);
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: background 0.2s ease, transform 0.1s ease;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+}
+
+.btn-agendamento:hover,
+.btn:hover {
+  background: var(--brand-dark); 
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* ========================================
+ * HEADER (AJUSTADO PARA O NOVO BACKGROUND)
+ * ========================================
+*/
 .site-header{
   border-bottom: 4px solid var(--brand-accent);
-  background: linear-gradient(180deg, rgba(0,0,0,0.02), transparent);
+  /* Aplicando o verde do código original do usuário no site-header */
+  background-color: var(--brand-header-bg); 
 }
 .header-inner{
   max-width: var(--max-width);
@@ -52,17 +96,17 @@ body{
   align-items: center;
   gap: var(--gap);
   padding: 0.8rem 1rem;
-  background-color: #109951;
+  /* Removendo background-color redundante aqui */
 }
 
 /* logo */
 .brand-logo{
-  width: 110px;             /* valor fixo que mantém proporção */
+  width: 110px;
   height: auto;
   display: block;
 }
 
-/* central slogan (oculta em telas muito pequenas) */
+/* central slogan */
 .header-center{
   flex: 1;
   text-align: center;
@@ -70,7 +114,7 @@ body{
 .tagline{
   display: inline-block;
   font-weight: 600;
-  color: var(--brand-dark);
+  color: var(--bg); /* Cor alterada para contraste no header verde */
   font-size: 0.95rem;
   letter-spacing: 0.02em;
 }
@@ -83,16 +127,16 @@ body{
 }
 .main-nav a{
   text-decoration: none;
-  color: var(--brand-dark);
+  color: var(--bg); /* Cor alterada para contraste no header verde */
   padding: 0.45rem 0.6rem;
   font-weight: 600;
   border-radius: 6px;
-  transition: transform .12s ease, box-shadow .12s ease;
+  transition: background .12s ease, box-shadow .12s ease;
 }
 .main-nav a:hover,
 .main-nav a:focus{
-  transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(40,31,50,0.08);
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: none;
   outline: none;
 }
 
@@ -109,12 +153,285 @@ body{
   .tagline{ font-size: .9rem; }
 }
 
-/* ainda: torne links visualmente claros no focus (acessibilidade) */
-.main-nav a:focus{
-  box-shadow: 0 0 0 3px rgba(201,58,46,0.12);
+/* ========================================
+ * LAYOUT PRINCIPAL (TAG MAIN) E CONTEÚDO
+ * ========================================
+*/
+main {
+    max-width: var(--max-width);
+    margin: 2.5rem auto;
+    padding: 0 var(--padding-main);
+    min-height: 60vh; /* Garante que o footer fique na parte inferior */
 }
 
-/* ===== Footer ===== */
+/* Títulos de Serviço */
+main h1 {
+    font-size: 2.2rem;
+    color: var(--brand-dark);
+    margin-bottom: var(--gap);
+    border-bottom: 2px solid var(--brand-accent);
+    padding-bottom: 0.5rem;
+    line-height: 1.2;
+}
+
+/* Imagem de Serviço no Conteúdo (float) */
+main div > img { /* Target img inside the wrapper div */
+    float: left;
+    margin-right: var(--gap);
+    margin-bottom: 1rem;
+    width: 15%; 
+    min-width: 80px;
+    max-width: 120px;
+    border-radius: 8px;
+    object-fit: contain;
+}
+
+/* Limpa o float no container */
+main div {
+    overflow: auto; 
+    padding-bottom: 1rem;
+}
+
+/* Lista de Objetivos (UL) */
+main ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 2rem;
+}
+main ul li {
+    margin: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+    color: var(--text);
+}
+main ul li::before {
+    content: "✔️"; /* Ícone de checkmark */
+    position: absolute;
+    left: 0;
+    color: var(--brand-accent);
+    font-weight: 600;
+}
+
+/* Estilo para links de subcategorias (nas páginas *home.html*) */
+.service-category-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.service-category-links h3 {
+    margin: 0;
+    padding: 0;
+}
+
+.service-category-links a {
+    display: block;
+    text-align: center;
+    padding: 1.5rem;
+    background: var(--bg-light);
+    border-radius: 10px;
+    text-decoration: none;
+    color: var(--brand-dark);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.service-category-links a:hover {
+    transform: translateY(-5px);
+    background: rgba(192, 50, 40, 0.05);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.service-category-links a img {
+    display: block;
+    margin: 0 auto 0.5rem;
+    width: 60px;
+    height: auto;
+}
+
+
+/* ========================================
+ * FORMULÁRIO DE AGENDAMENTO
+ * ========================================
+*/
+.agendamento-form-container {
+    padding: 2rem;
+    background-color: var(--bg-light);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.agendamento-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.agendamento-form h1 {
+    text-align: center;
+    color: var(--brand-dark);
+    border-bottom: 3px solid var(--brand-accent);
+    padding-bottom: 0.5rem;
+}
+
+.agendamento-form p {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: var(--muted);
+}
+
+fieldset {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 0;
+}
+
+legend {
+    font-weight: 700;
+    color: var(--brand-accent);
+    font-size: 1.1rem;
+    padding: 0 0.5rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--brand-accent);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(192, 50, 40, 0.1);
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.form-group small {
+    display: block;
+    margin-top: 0.2rem;
+    color: var(--muted);
+    font-size: 0.85rem;
+}
+
+.form-actions {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.btn-submit {
+    font-size: 1.1rem;
+}
+
+/* Responsividade do Formulário (Duas colunas em telas maiores) */
+@media (min-width: 600px) {
+    fieldset {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem 2rem;
+    }
+    /* Campos que devem ocupar 100% da largura em seu fieldset */
+    fieldset:nth-of-type(3) .form-group:nth-child(2) { /* Detalhes do Serviço */
+        grid-column: 1 / -1; 
+    }
+    fieldset:nth-of-type(1) .form-group:nth-child(3) { /* Email */
+        grid-column: 1 / -1; 
+    }
+    .form-actions {
+        grid-column: 1 / -1;
+    }
+}
+
+
+/* ========================================
+ * LOJA DE PEÇAS (CORRIGIDO)
+ * ========================================
+*/
+
+.pecas-section{
+  max-width: var(--max-width);
+  margin: 3rem auto;
+  padding: 0 1rem;
+}
+
+.pecas-section h2{
+  text-align: center;
+  color: var(--brand-dark);
+  margin-bottom: 2rem;
+  font-size: 1.8rem;
+  border-bottom: 3px solid var(--brand-accent);
+  display: inline-block;
+  padding-bottom: 0.3rem;
+}
+
+.tabela_pecas{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--gap);
+}
+
+.peca-card{
+  background: var(--bg-light);
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  padding: 1.2rem;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.peca-card:hover{
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+}
+
+.peca-card h3{
+  margin-top: 0;
+  color: var(--brand-dark);
+  font-size: 1.2rem;
+  border-bottom: 2px solid var(--brand-accent);
+  padding-bottom: 0.3rem;
+}
+
+.peca-card p{
+  margin: 0.4rem 0;
+  color: var(--text);
+}
+
+.peca-card strong{
+  color: var(--brand-dark);
+}
+
+.peca-card .btn{
+  display: block; /* Alterado para block para preencher o card */
+  margin-top: 0.8rem;
+}
+
+/* ========================================
+ * FOOTER
+ * ========================================
+*/
 .site-footer{
   background-color: var(--brand-dark);
   color: #f1f1f1;
@@ -187,216 +504,10 @@ body{
     margin: 0 auto 0.8rem;
   }
 }
-
-/* Sobre Nós */
-.hamburger {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-}
- 
-.hamburger span {
-    width: 25px;
-    height: 3px;
-    background: #333;
-    margin: 3px 0;
-}
- 
-.hero {
-    background: #f0f9ff;
-    padding: 120px 0 80px;
-    text-align: center;
-}
- 
-.hero h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-    color: #1e293b;
-}
- 
-.highlight {
-    color: #22c55e;
-}
- 
-.hero-subtitle {
-    font-size: 1.2rem;
-    color: #64748b;
-    margin-bottom: 2rem;
-}
- 
-.hero-stats {
-    display: flex;
-    justify-content: center;
-    gap: 3rem;
-    margin-bottom: 2rem;
-}
- 
-.stat-number {
-    display: block;
-    font-size: 2rem;
-    font-weight: bold;
-    color: #22c55e;
-}
- 
-.stat-label {
-    font-size: 0.9rem;
-    color: #64748b;
-}
- 
-.cta-button {
-    background: #22c55e;
-    color: white;
-    padding: 1rem 2rem;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: bold;
-}
- 
-.cta-button:hover {
-    background: #16a34a;
-}
- 
-.hero-img {
-    max-width: 300px;
-    width: 1000%;
-    margin-top: 5rem;
-    border-radius: 10px;
-}
-/* Peças */
-.tabela_pecas {
-  border-collapse: collapse;
-  width: 60%;
-  margin: 20px 0;
-}
-
-.tabela_pecas th,
-.tabela_pecas td {
-  border: 1px solid #555;
-  padding: 8px;
-  text-align: left;
-}
-
-.tabela_pecas th {
-  background-color: #e0e0e0;
-}
-:root{
-  --brand-dark: #0b1320;
-  --brand-accent: #c93a2e;
-  --bg: #ffffff;
-  --text: #222222;
-  --muted: #666666;
-  --max-width: 1100px;
-  --gap: 1rem;
-}
-
-/* Header */
-.site-header{ border-bottom:4px solid var(--brand-accent); background: linear-gradient(...); 
-}
-.header-inner{ max-width:var(--max-width); margin:0 auto; display:flex; align-items:center; gap:var(--gap); padding:0.8rem 1rem;}
-.brand-logo{ width:110px; }
-
-/* Hero */
-.site-main{ max-width:var(--max-width); margin:1.2rem auto; padding:0 1rem;}
-.hero{ padding:1.2rem; border-radius:8px; margin-bottom:1.2rem;}
-.hero-inner{ display:flex; gap:1rem; align-items:center; }
-.hero-text{ flex:1 1 420px; }
-.hero h1{ font-size:1.6rem; color:var(--brand-dark); }
-.hero-cta .btn{ background:var(--brand-accent); color:#fff; padding:0.6rem 0.9rem; border-radius:6px; }
-
-/* Cards */
-.cards{ display:grid; grid-template-columns: repeat(4, 1fr); gap:1rem; }
-.card{ background:#fff; padding:1rem; border-radius:8px; box-shadow:0 6px 18px rgba(...); }
-.card-link{ color:var(--brand-accent); font-weight:700; }
-
-/* Footer */
-.site-footer{ background-color:var(--brand-dark); color:#f1f1f1; padding:2rem 1rem; border-top:4px solid var(--brand-accent); }
-
-/* Responsividade */
-@media (max-width: 980px){ .cards{ grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 620px){ .cards{ grid-template-columns: 1fr; } .header-inner{ flex-wrap:wrap; } }
-.btn{
-  background: var(--brand-accent);
-  color: var(--bg);
-  padding: 0.6rem 1rem;
-  border-radius: 6px;
-  text-decoration: none;
-  transition: background .2s ease;
-}
-
-.btn:hover{
-  background: var(--brand-green);
-}
-/* ====== Loja de Peças ====== */
-
-.pecas-section{
-  max-width: var(--max-width);
-  margin: 3rem auto;
-  padding: 0 1rem;
-}
-
-.pecas-section h2{
-  text-align: center;
-  color: var(--brand-dark);
-  margin-bottom: 2rem;
-  font-size: 1.8rem;
-  border-bottom: 3px solid var(--brand-accent);
-  display: inline-block;
-  padding-bottom: 0.3rem;
-}
-
-/* Grade dos cards */
-.tabela_pecas{
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
-}
-
-/* Cada card individual */
-.peca-card{
-  background: var(--bg-light);
-  border: 1px solid rgba(0,0,0,0.08);
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-  padding: 1.2rem;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
-}
-
-.peca-card:hover{
-  transform: translateY(-4px);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
-}
-
-/* Textos dentro dos cards */
-.peca-card h3{
-  margin-top: 0;
-  color: var(--brand-dark);
-  font-size: 1.2rem;
-  border-bottom: 2px solid var(--brand-accent);
-  padding-bottom: 0.3rem;
-}
-
-.peca-card p{
-  margin: 0.4rem 0;
-  color: var(--text);
-}
-
-.peca-card strong{
-  color: var(--brand-dark);
-}
-
-/* Botão (reaproveita o estilo global) */
-.peca-card .btn{
-  display: inline-block;
-  margin-top: 0.6rem;
-  background: var(--brand-accent);
-  color: var(--bg);
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  text-decoration: none;
-  transition: background .2s ease;
-  font-weight: 600;
-}
-
-.peca-card .btn:hover{
-  background: var(--brand-green);
+ /* Estilo para links de subcategorias (nas páginas *home.html* e em nossos-servicos.html) */
+.service-category-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Faz o layout de grade */
+    gap: 2rem;
+    margin-top: 2rem;
 }
