@@ -91,3 +91,20 @@ header{
     margin-top: 5rem;
     border-radius: 10px;
 }
+
+.tabela_pecas {
+  border-collapse: collapse;
+  width: 60%;
+  margin: 20px 0;
+}
+
+.tabela_pecas th,
+.tabela_pecas td {
+  border: 1px solid #555;
+  padding: 8px;
+  text-align: left;
+}
+
+.tabela_pecas th {
+  background-color: #e0e0e0;
+}
