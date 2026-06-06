@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <title>Jacaré Mecânica e Auto Peças</title>
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/teste.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Estilos dos Modais (Pop-ups) -->
+    <style>
+        /* Fundo escuro do Modal (Pop-up) */
+        .modal {
+            display: none; /* Começa escondido */
+            position: fixed; /* Fica fixo na tela */
+            z-index: 1000; /* Fica por cima de todos os outros elementos */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7); /* Fundo preto semi-transparente */
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Caixa do formulário */
+        .modal-content {
+            background: #1f2937; /* Cor baseada no seu tema escuro */
+            padding: 30px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            position: relative;
+            text-align: center;
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        /* Botão de Fechar (o 'X') */
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            color: #cbd5e1;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close-btn:hover {
+            color: #ef4444; /* Fica vermelho ao passar o mouse */
+        }
+
+        /* Inputs do modal */
+        .modal-content input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        /* Botão de Entrar (Verde) */
+        .btn-login {
+            width: 100%;
+            background: #22c55e;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .btn-login:hover {
+            background: #16a34a;
+        }
+
+        /* Botão de Cadastro (Azul) */
+        .btn-cadastro {
+            width: 100%;
+            background: #3b82f6; 
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .btn-cadastro:hover {
+            background: #2563eb;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="site-header">
+    <div class="header-inner">
+        <a class="brand" href="index.html" aria-label="Jacaré Mecânica e Auto Peças — Página Inicial">
+            <img src="img/logo2.png" alt="Logotipo Jacaré" class="brand-logo">
+        </a>
+
+        <nav class="main-nav" role="navigation" aria-label="Menu principal">
+            <a href="index.html">Início</a>
+            <a href="nossos-servicos.html">Nossos Serviços</a>
+            <a href="pecas.html">Nossa loja de Peças</a>
+            <a href="sobre-nos.html">Sobre Nós</a>
+            <a href="contato.html">Contato</a>
+            
+            <div class="dropdown">
+                <a href="#" class="dropbtn">Cadastrar ▾</a>
+                <div class="dropdown-content">
+                    <a href="cadastro-clientes.html">Cliente</a>
+                    <a href="cadastro-carros.html">Carro</a>
+                    <a href="cadastro-servico.html">Serviço</a>
+                    <a href="cadastro-colaboradores.html">Colaborador</a>
+                </div>
+            </div>
+            
+            <a href="#" id="loginBtn">Login</a>
+        </nav>
+    </div>
+
+    <div class="header-slogan-bar">
+        <span class="tagline">Peças de qualidade, serviço de confiança</span>
+    </div>
+</header>
+
+    <main class="site-main">
+        <section class="hero">
+            <div class="hero-inner">
+                <div class="hero-text">
+                    <h1>Confiança para seu carro, preço justo para o seu bolso</h1>
+                    <p>Na Jacaré você encontra manutenção completa e as melhores marcas em autopeças...</p>
+                    <p class="hero-cta"><a href="nossos-servicos.html" class="btn">Agende seu serviço</a></p>
+                </div>
+                <div class="hero-images" aria-hidden="true">
+                    <img src="img/oficina1.jpeg" alt="Oficina - vista interna" class="hero-img">
+                    <img src="img/oficina2.jpeg" alt="Mecânico trabalhando" class="hero-img">
+                    <img src="img/oficina3.jpeg" alt="Carro capô aberto" class="hero-img">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-col">
+                <img src="img/logo2.png" alt="Logo Jacaré Mecânica e Auto Peças" class="footer-logo">
+                <p>Transparência em cada orçamento, confiança em cada reparo.</p>
+            </div>
+
+            <div class="footer-col">
+                <h3>Contato</h3>
+                <p>📍 Rua Geraldo Costa Cruz, 84A – Taquara Preta – Cataguases/MG</p>
+                <p>📞 (32) 3421-9715</p>
+                <p>✉️ autopecas.jacare@outlook.com.br</p>
+            </div>
+
+            <div class="footer-col">
+                <h3>Links úteis</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="nossos-servicos.html">Serviços</a></li>
+                    <li><a href="pecas.html">Peças</a></li>
+                    <li><a href="sobre-nos.html">Sobre Nós</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2025 Jacaré Mecânica e Auto Peças — Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- ============================================== -->
+    <!-- MODAL DE LOGIN -->
+    <!-- ============================================== -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span id="closeLogin" class="close-btn">&times;</span>
+            <h2>Entrar</h2>
+            <br>
+            <!-- Ajuste o action para o arquivo PHP que processa o login -->
+            <form method="POST" action="php/processa_login.php">
+                <input type="email" name="email" placeholder="E-mail" required>
+                <input type="password" name="senha" placeholder="Senha" required>
+                <button type="submit" class="btn-login">Entrar</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- MODAL DE CADASTRO -->
+    <!-- ============================================== -->
+    <div id="loginModal" class="meu-modal-wrapper">
+        <div class="meu-modal-caixa">
+            <span class="meu-modal-fechar" id="closeLogin">&times;</span>
+            <h2>Acesse sua conta</h2>
+            <form action="php/login.php" method="POST">
+                <label for="username">Usuário</label>
+                <input type="text" id="username" name="username" placeholder="Digite seu usuário" required>
+                
+                <label for="password">Senha</label>
+                <input type="password" id="password" name="password" placeholder="Digite sua senha" required>
+                
+                <button type="submit">Entrar</button>
+            </form>
+        </div>
+    </div>
+
+    <style>
+        .meu-modal-wrapper {
+            display: none; 
+            position: fixed; 
+            z-index: 9999 !important; /* Garante que fica por cima de tudo */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.75); 
+            align-items: center;
+            justify-content: center;
+        }
+
+        .meu-modal-caixa {
+            background-color: #1f2937 !important; /* Força o fundo escuro correto */
+            padding: 30px;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+            position: relative;
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        .meu-modal-caixa h2 {
+            margin-top: 0;
+            margin-bottom: 20px; 
+            color: #ffffff !important; /* Força o título a ser branco */
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .meu-modal-caixa form {
+            display: flex; 
+            flex-direction: column; 
+            text-align: left;
+        }
+
+        .meu-modal-caixa label {
+            margin-bottom: 5px; 
+            color: #cbd5e1 !important; /* Cor do texto das etiquetas */
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .meu-modal-caixa input {
+            margin-bottom: 15px; 
+            padding: 10px 12px; 
+            border-radius: 6px; 
+            border: 1px solid #4b5563;
+            background-color: #374151; /* Fundo dos campos de digitação */
+            color: #ffffff !important; /* Texto digitado em branco */
+            font-size: 16px;
+        }
+
+        .meu-modal-caixa input:focus {
+            outline: 2px solid #22c55e;
+        }
+
+        .meu-modal-fechar {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            color: #9ca3af;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        .meu-modal-fechar:hover {
+            color: #ffffff;
+        }
+
+        .meu-modal-caixa button {
+            background-color: #22c55e !important; 
+            color: white !important; 
+            padding: 12px; 
+            border: none; 
+            border-radius: 6px; 
+            cursor: pointer; 
+            font-weight: bold; 
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .meu-modal-caixa button:hover {
+            background-color: #16a34a !important;
+        }
+    </style>
+
+    <script>
+        var modalLogin = document.getElementById("loginModal");
+        var btnLogin = document.getElementById("loginBtn");
+        var closeLogin = document.getElementById("closeLogin");
+
+        // Abre o modal ao clicar no botão de Login do menu
+        if(btnLogin && modalLogin) {
+            btnLogin.onclick = function(event) {
+                event.preventDefault(); 
+                modalLogin.style.display = "flex";
+            }
+        }
+
+        // Fecha o modal ao clicar no "X"
+        if(closeLogin && modalLogin) {
+            closeLogin.onclick = function() {
+                modalLogin.style.display = "none";
+            }
+        }
+
+        // Fecha o modal ao clicar na área escura de fora
+        window.onclick = function(event) {
+            if (event.target == modalLogin) {
+                modalLogin.style.display = "none";
+            }
+        }
+    </script>
+
+    <!-- ============================================== -->
+    <!-- SCRIPTS DOS MODAIS -->
+    <!-- ============================================== -->
+    <script>
+        // 1. Seleciona os Modais
+        var modalLogin = document.getElementById("loginModal");
+        var modalCadastro = document.getElementById("cadastroModal");
+
+        // 2. Seleciona os botões no Menu (Navbar)
+        var btnLogin = document.getElementById("loginBtn");
+        var btnCadastro = document.getElementById("cadastroBtn");
+
+        // 3. Seleciona os botões de fechar (O "X" no canto superior)
+        var closeLogin = document.getElementById("closeLogin");
+        var closeCadastro = document.getElementById("closeCadastro");
+
+        // --- ABRIR MODAIS ---
+        btnLogin.onclick = function(event) {
+            event.preventDefault(); // Evita pular pro topo da tela
+            modalLogin.style.display = "flex";
+        }
+
+        btnCadastro.onclick = function(event) {
+            event.preventDefault(); // Evita pular pro topo da tela
+            modalCadastro.style.display = "flex";
+        }
+
+        // --- FECHAR MODAIS NO "X" ---
+        closeLogin.onclick = function() {
+            modalLogin.style.display = "none";
+        }
+
+        closeCadastro.onclick = function() {
+            modalCadastro.style.display = "none";
+        }
+
+        // --- FECHAR CLICANDO FORA DA JANELA ESCURA ---
+        window.onclick = function(event) {
+            if (event.target == modalLogin) {
+                modalLogin.style.display = "none";
+            }
+            if (event.target == modalCadastro) {
+                modalCadastro.style.display = "none";
+            }
+        }
+    </script>
+</body>
+
+</html>

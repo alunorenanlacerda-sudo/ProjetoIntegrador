@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Carro - Jacaré Mecânica</title>
+    <link rel="stylesheet" href="css/teste.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .form-container {
+            background-color: #f4f4f4;
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 50px;
+        }
+        .main-title {
+            border-bottom: 2px solid #888;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+        .section-title {
+            color: #b32400;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-bottom: 1px solid #b32400;
+            padding-bottom: 5px;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+    <div class="header-inner">
+        <a class="brand" href="index.html" aria-label="Jacaré Mecânica e Auto Peças — Página Inicial">
+            <img src="img/logo2.png" alt="Logotipo Jacaré" class="brand-logo">
+        </a>
+
+        <nav class="main-nav" role="navigation" aria-label="Menu principal">
+            <a href="index.html">Início</a>
+            <a href="nossos-servicos.html">Nossos Serviços</a>
+            <a href="pecas.html">Nossa loja de Peças</a>
+            <a href="sobre-nos.html">Sobre Nós</a>
+            <a href="contato.html">Contato</a>
+            
+            <div class="dropdown">
+                <a href="#" class="dropbtn">Cadastrar ▾</a>
+                <div class="dropdown-content">
+                    <a href="cadastro-clientes.html">Cliente</a>
+                    <a href="cadastro-carros.html">Carro</a>
+                    <a href="cadastro-servico.html">Serviço</a>
+                    <a href="cadastro-colaboradores.html">Colaborador</a>
+                </div>
+            </div>
+            
+            <a href="#" id="loginBtn">Login</a>
+        </nav>
+    </div>
+
+    <div class="header-slogan-bar">
+        <span class="tagline">Peças de qualidade, serviço de confiança</span>
+    </div>
+</header>
+
+    <div class="container mt-5">
+        <div class="form-container shadow-sm">
+            
+            <h2 class="main-title">Cadastro de Veículo</h2>
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <p class="mb-0 text-muted">Preencha os dados abaixo para registrar um novo carro.</p>
+    <a href="listar-carros.php" class="btn btn-primary px-4 py-2 fw-bold shadow-sm" style="border-radius: 8px; background-color: #3b82f6; border: none;">
+        📋 Ver Cadastrados
+    </a>
+</div>
+
+            <form action="php/processa_carro.php" method="POST">
+                
+                <h5 class="section-title">Dados do Veículo</h5>
+                
+                <div class="row">
+                    <div class="col-md-3 mb-3">
+                        <label for="placa" class="form-label fw-bold">Placa:</label>
+                        <input type="text" class="form-control" id="placa" name="placa" placeholder="ABC-1234" required>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="marca" class="form-label fw-bold">Marca:</label>
+                        <input type="text" class="form-control" id="marca" name="marca" placeholder="Ex: Chevrolet">
+                    </div>
+                    <div class="col-md-5 mb-3">
+                        <label for="modelo" class="form-label fw-bold">Modelo:</label>
+                        <input type="text" class="form-control" id="modelo" name="modelo" placeholder="Ex: Onix 1.0">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3 mb-3">
+                        <label for="ano" class="form-label fw-bold">Ano:</label>
+                        <input type="number" class="form-control" id="ano" name="ano" placeholder="Ex: 2020">
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="cor" class="form-label fw-bold">Cor:</label>
+                        <input type="text" class="form-control" id="cor" name="cor" placeholder="Ex: Prata">
+                    </div>
+                    <div class="col-md-5 mb-3">
+                        <label for="cpf_dono" class="form-label fw-bold">CPF do Dono do Carro:</label>
+                        <input type="text" class="form-control" id="cpf_dono" name="cpf_dono" placeholder="Apenas números ou com pontuação" required>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="observacoes" class="form-label fw-bold">Observações (Opcional):</label>
+                    <textarea class="form-control" id="observacoes" name="observacoes" rows="3" placeholder="Arranhões, defeitos visíveis, etc."></textarea>
+                </div>
+
+                <div class="text-center mt-5">
+                    <a href="index.html" class="btn btn-outline-secondary px-4 py-2 me-2">Cancelar</a>
+                    <button type="submit" class="btn btn-success px-4 py-2">Salvar Veículo</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+<div id="loginModal" class="meu-modal-wrapper">
+        <div class="meu-modal-caixa">
+            <span class="meu-modal-fechar" id="closeLogin">&times;</span>
+            <h2>Acesse sua conta</h2>
+            <form action="php/login.php" method="POST">
+                <label for="username">Usuário</label>
+                <input type="text" id="username" name="username" placeholder="Digite seu usuário" required>
+                
+                <label for="password">Senha</label>
+                <input type="password" id="password" name="password" placeholder="Digite sua senha" required>
+                
+                <button type="submit">Entrar</button>
+            </form>
+        </div>
+    </div>
+
+    <style>
+        .meu-modal-wrapper {
+            display: none; 
+            position: fixed; 
+            z-index: 9999 !important; /* Garante que fica por cima de tudo */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.75); 
+            align-items: center;
+            justify-content: center;
+        }
+
+        .meu-modal-caixa {
+            background-color: #1f2937 !important; /* Força o fundo escuro correto */
+            padding: 30px;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+            position: relative;
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        .meu-modal-caixa h2 {
+            margin-top: 0;
+            margin-bottom: 20px; 
+            color: #ffffff !important; /* Força o título a ser branco */
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .meu-modal-caixa form {
+            display: flex; 
+            flex-direction: column; 
+            text-align: left;
+        }
+
+        .meu-modal-caixa label {
+            margin-bottom: 5px; 
+            color: #cbd5e1 !important; /* Cor do texto das etiquetas */
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .meu-modal-caixa input {
+            margin-bottom: 15px; 
+            padding: 10px 12px; 
+            border-radius: 6px; 
+            border: 1px solid #4b5563;
+            background-color: #374151; /* Fundo dos campos de digitação */
+            color: #ffffff !important; /* Texto digitado em branco */
+            font-size: 16px;
+        }
+
+        .meu-modal-caixa input:focus {
+            outline: 2px solid #22c55e;
+        }
+
+        .meu-modal-fechar {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            color: #9ca3af;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        .meu-modal-fechar:hover {
+            color: #ffffff;
+        }
+
+        .meu-modal-caixa button {
+            background-color: #22c55e !important; 
+            color: white !important; 
+            padding: 12px; 
+            border: none; 
+            border-radius: 6px; 
+            cursor: pointer; 
+            font-weight: bold; 
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .meu-modal-caixa button:hover {
+            background-color: #16a34a !important;
+        }
+    </style>
+
+    <script>
+        var modalLogin = document.getElementById("loginModal");
+        var btnLogin = document.getElementById("loginBtn");
+        var closeLogin = document.getElementById("closeLogin");
+
+        // Abre o modal ao clicar no botão de Login do menu
+        if(btnLogin && modalLogin) {
+            btnLogin.onclick = function(event) {
+                event.preventDefault(); 
+                modalLogin.style.display = "flex";
+            }
+        }
+
+        // Fecha o modal ao clicar no "X"
+        if(closeLogin && modalLogin) {
+            closeLogin.onclick = function() {
+                modalLogin.style.display = "none";
+            }
+        }
+
+        // Fecha o modal ao clicar na área escura de fora
+        window.onclick = function(event) {
+            if (event.target == modalLogin) {
+                modalLogin.style.display = "none";
+            }
+        }
+    </script>
+
+    <script>
+        var modalLogin = document.getElementById("loginModal");
+        var btnLogin = document.getElementById("loginBtn");
+        var closeLogin = document.getElementById("closeLogin");
+
+        // 1. Faz o botão do cabeçalho ABRIR a janela
+        if(btnLogin && modalLogin) {
+            btnLogin.onclick = function(event) {
+                event.preventDefault(); // Impede a tela de pular para o topo
+                modalLogin.style.display = "flex";
+            }
+        }
+
+        // 2. Faz o "X" FECHAR a janela
+        if(closeLogin && modalLogin) {
+            closeLogin.onclick = function() {
+                modalLogin.style.display = "none";
+            }
+        }
+
+        // 3. FECHA a janela se o usuário clicar fora da caixa escura
+        window.onclick = function(event) {
+            if (event.target == modalLogin) {
+                modalLogin.style.display = "none";
+            }
+        }
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Procura pelos campos de CPF nas diferentes páginas
+            const cpfInputs = document.querySelectorAll('#cpf, #cpf_dono');
+
+            cpfInputs.forEach(function(input) {
+                
+                // 1. Aplica a máscara (pontos e traço) enquanto o utilizador digita
+                input.addEventListener('input', function(e) {
+                    let value = e.target.value.replace(/\D/g, ''); // Remove tudo o que não é número
+                    if (value.length > 11) value = value.slice(0, 11); // Limita a 11 números
+                    
+                    // Coloca a formatação 000.000.000-00
+                    value = value.replace(/(\d{3})(\d)/, '$1.$2');
+                    value = value.replace(/(\d{3})(\d)/, '$1.$2');
+                    value = value.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+                    
+                    e.target.value = value;
+                });
+
+                // 2. Valida matematicamente o CPF quando o utilizador sai do campo
+                input.addEventListener('blur', function(e) {
+                    let valor = e.target.value;
+                    if (valor.length > 0) {
+                        let cpfValido = validarCPF(valor);
+                        if (!cpfValido) {
+                            alert('Por favor, introduza um CPF válido.');
+                            e.target.value = ''; // Limpa o campo errado
+                            e.target.focus();    // Mantém o cursor no campo
+                        }
+                    }
+                });
+            });
+
+            // ==========================================
+            // FUNÇÃO MATEMÁTICA QUE VERIFICA O CPF
+            // ==========================================
+            function validarCPF(cpf) {
+                cpf = cpf.replace(/[^\d]+/g,''); // Retira a máscara para validar
+                
+                if(cpf == '') return false;
+                
+                // Elimina CPFs falsos mais conhecidos ou com tamanho errado
+                if (cpf.length != 11 || /^(\d)\1{10}$/.test(cpf)) return false;
+
+                // Valida o 1º dígito verificador
+                let add = 0;
+                for (let i=0; i < 9; i ++) add += parseInt(cpf.charAt(i)) * (10 - i);
+                let rev = 11 - (add % 11);
+                if (rev == 10 || rev == 11) rev = 0;
+                if (rev != parseInt(cpf.charAt(9))) return false;
+
+                // Valida o 2º dígito verificador
+                add = 0;
+                for (let i = 0; i < 10; i ++) add += parseInt(cpf.charAt(i)) * (11 - i);
+                rev = 11 - (add % 11);
+                if (rev == 10 || rev == 11) rev = 0;
+                if (rev != parseInt(cpf.charAt(10))) return false;
+
+                return true; // Se passar por tudo, o CPF é verdadeiro!
+            }
+        });
+    </script>
+</body>
+</html>

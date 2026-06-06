@@ -1,0 +1,114 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#111827;
+    color:white;
+    min-height:100vh;
+}
+
+header{
+    background:#0f172a;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 8%;
+    border-bottom:3px solid #22c55e;
+}
+
+.logo h1{
+    color:#22c55e;
+}
+
+nav a{
+    text-decoration:none;
+    color:white;
+    margin-left:20px;
+    font-weight:bold;
+}
+
+nav a:hover{
+    color:#22c55e;
+}
+
+.hero{
+    height:80vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+}
+
+.hero h2{
+    font-size:48px;
+    margin-bottom:20px;
+}
+
+.hero p{
+    font-size:20px;
+    margin-bottom:30px;
+    color:#cbd5e1;
+}
+
+.buttons{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+}
+
+.btn{
+    background:#22c55e;
+    color:white;
+    text-decoration:none;
+    padding:15px 30px;
+    border-radius:10px;
+    font-weight:bold;
+}
+
+.btn-secondary{
+    background:#2563eb;
+}
+
+
+.container{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+}
+
+.card{
+    background:#1f2937;
+    width:500px;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 0 20px rgba(0,0,0,.3);
+}
+
+.card h2{
+    margin-bottom:20px;
+    text-align:center;
+}
+
+input,
+textarea{
+    width:100%;
+    padding:12px;
+    margin-bottom:15px;
+    border:none;
+    border-radius:8px;
+}
+
+button{
+    width:100%;
+    background:#22c55e;
+    color:white;
+    border:none;
+    padding:12px;
+    border-radius:8px;
+    cursor:pointer;
+}

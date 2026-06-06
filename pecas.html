@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Catálogo de Peças - Jacaré Mecânica e Auto Peças</title>
+    <meta lang="pt-br">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/teste.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <header class="site-header">
+    <div class="header-inner">
+        <a class="brand" href="index.html" aria-label="Jacaré Mecânica e Auto Peças — Página Inicial">
+            <img src="img/logo2.png" alt="Logotipo Jacaré" class="brand-logo">
+        </a>
+
+        <nav class="main-nav" role="navigation" aria-label="Menu principal">
+            <a href="index.html">Início</a>
+            <a href="nossos-servicos.html">Nossos Serviços</a>
+            <a href="pecas.html">Nossa loja de Peças</a>
+            <a href="sobre-nos.html">Sobre Nós</a>
+            <a href="contato.html">Contato</a>
+            
+            <div class="dropdown">
+                <a href="#" class="dropbtn">Cadastrar ▾</a>
+                <div class="dropdown-content">
+                    <a href="cadastro-clientes.html">Cliente</a>
+                    <a href="cadastro-carros.html">Carro</a>
+                    <a href="cadastro-servico.html">Serviço</a>
+                    <a href="cadastro-colaboradores.html">Colaborador</a>
+                </div>
+            </div>
+            
+            <a href="#" id="loginBtn">Login</a>
+        </nav>
+    </div>
+
+    <div class="header-slogan-bar">
+        <span class="tagline">Peças de qualidade, serviço de confiança</span>
+    </div>
+</header>
+    <main>
+<section class="pecas-section"> 
+  <h2>Nossas Peças</h2>
+  <p>Confira algumas das peças disponíveis em nossa loja:</p>
+  <div class="tabela_pecas">
+    
+    <div class="peca-card">
+      <h3>Pastilha de Freio Dianteira</h3>
+      <p><strong>Marca:</strong> Bosch</p>
+      <p><strong>Veículo:</strong> Fiat Uno / Palio</p>
+      <p><strong>Preço:</strong> R$ 120,00</p>
+      <a href="#" class="btn">Solicitar orçamento</a>
+    </div>
+
+    <div class="peca-card">
+      <h3>Filtro de Óleo</h3>
+      <p><strong>Marca:</strong> Fram</p>
+      <p><strong>Veículo:</strong> Volkswagen Gol / Fox</p>
+      <p><strong>Preço:</strong> R$ 35,00</p>
+      <a href="#" class="btn">Solicitar orçamento</a>
+    </div>
+
+    <div class="peca-card">
+      <h3>Correia Dentada</h3>
+      <p><strong>Marca:</strong> Contitech</p>
+      <p><strong>Veículo:</strong> Chevrolet Onix / Prisma</p>
+      <p><strong>Preço:</strong> R$ 89,00</p>
+      <a href="#" class="btn">Solicitar orçamento</a>
+    </div>
+
+  </div>
+</section>
+    </main>
+
+    <footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-col">
+      <img src="img/logo2.png" alt="Logo Jacaré Mecânica e Auto Peças" class="footer-logo">
+      <p>Transparência em cada orçamento, confiança em cada reparo.</p>
+    </div>
+
+    <div class="footer-col">
+      <h3>Contato</h3>
+      <p>📍 Rua Geraldo Costa Cruz, 84A – Taquara Preta – Cataguases/MG</p>
+      <p>📞 (32) 3421-9715</p>
+      <p>✉️autopecas.jacare@outlook.com.br </p>
+    </div>
+
+    <div class="footer-col">
+      <h3>Links úteis</h3>
+      <ul class="footer-links">
+        <li><a href="index.html">Início</a></li>
+        <li><a href="nossos-servicos.html">Serviços</a></li>
+        <li><a href="pecas.html">Peças</a></li>
+        <li><a href="sobre-nos.html">Sobre Nós</a></li>
+        <li><a href="contato.html">Contato</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2025 Jacaré Mecânica e Auto Peças — Todos os direitos reservados.</p>
+  </div>
+</footer>
+<div id="loginModal" class="meu-modal-wrapper">
+        <div class="meu-modal-caixa">
+            <span class="meu-modal-fechar" id="closeLogin">&times;</span>
+            <h2>Acesse sua conta</h2>
+            <form action="php/login.php" method="POST">
+                <label for="username">Usuário</label>
+                <input type="text" id="username" name="username" placeholder="Digite seu usuário" required>
+                
+                <label for="password">Senha</label>
+                <input type="password" id="password" name="password" placeholder="Digite sua senha" required>
+                
+                <button type="submit">Entrar</button>
+            </form>
+        </div>
+    </div>
+
+    <style>
+        .meu-modal-wrapper {
+            display: none; 
+            position: fixed; 
+            z-index: 9999 !important; /* Garante que fica por cima de tudo */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.75); 
+            align-items: center;
+            justify-content: center;
+        }
+
+        .meu-modal-caixa {
+            background-color: #1f2937 !important; /* Força o fundo escuro correto */
+            padding: 30px;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+            position: relative;
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        .meu-modal-caixa h2 {
+            margin-top: 0;
+            margin-bottom: 20px; 
+            color: #ffffff !important; /* Força o título a ser branco */
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .meu-modal-caixa form {
+            display: flex; 
+            flex-direction: column; 
+            text-align: left;
+        }
+
+        .meu-modal-caixa label {
+            margin-bottom: 5px; 
+            color: #cbd5e1 !important; /* Cor do texto das etiquetas */
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .meu-modal-caixa input {
+            margin-bottom: 15px; 
+            padding: 10px 12px; 
+            border-radius: 6px; 
+            border: 1px solid #4b5563;
+            background-color: #374151; /* Fundo dos campos de digitação */
+            color: #ffffff !important; /* Texto digitado em branco */
+            font-size: 16px;
+        }
+
+        .meu-modal-caixa input:focus {
+            outline: 2px solid #22c55e;
+        }
+
+        .meu-modal-fechar {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            color: #9ca3af;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        .meu-modal-fechar:hover {
+            color: #ffffff;
+        }
+
+        .meu-modal-caixa button {
+            background-color: #22c55e !important; 
+            color: white !important; 
+            padding: 12px; 
+            border: none; 
+            border-radius: 6px; 
+            cursor: pointer; 
+            font-weight: bold; 
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .meu-modal-caixa button:hover {
+            background-color: #16a34a !important;
+        }
+    </style>
+
+    <script>
+        var modalLogin = document.getElementById("loginModal");
+        var btnLogin = document.getElementById("loginBtn");
+        var closeLogin = document.getElementById("closeLogin");
+
+        // Abre o modal ao clicar no botão de Login do menu
+        if(btnLogin && modalLogin) {
+            btnLogin.onclick = function(event) {
+                event.preventDefault(); 
+                modalLogin.style.display = "flex";
+            }
+        }
+
+        // Fecha o modal ao clicar no "X"
+        if(closeLogin && modalLogin) {
+            closeLogin.onclick = function() {
+                modalLogin.style.display = "none";
+            }
+        }
+
+        // Fecha o modal ao clicar na área escura de fora
+        window.onclick = function(event) {
+            if (event.target == modalLogin) {
+                modalLogin.style.display = "none";
+            }
+        }
+    </script>
+
+    <script>
+        var modalLogin = document.getElementById("loginModal");
+        var btnLogin = document.getElementById("loginBtn");
+        var closeLogin = document.getElementById("closeLogin");
+
+        // 1. Faz o botão do cabeçalho ABRIR a janela
+        if(btnLogin && modalLogin) {
+            btnLogin.onclick = function(event) {
+                event.preventDefault(); // Impede a tela de pular para o topo
+                modalLogin.style.display = "flex";
+            }
+        }
+
+        // 2. Faz o "X" FECHAR a janela
+        if(closeLogin && modalLogin) {
+            closeLogin.onclick = function() {
+                modalLogin.style.display = "none";
+            }
+        }
+
+        // 3. FECHA a janela se o usuário clicar fora da caixa escura
+        window.onclick = function(event) {
+            if (event.target == modalLogin) {
+                modalLogin.style.display = "none";
+            }
+        }
+    </script>
+</body>
+
+</html>

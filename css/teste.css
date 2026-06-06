@@ -1,0 +1,697 @@
+/*
+    #                   = id
+    .                   = class
+    :                   = pseudo-class
+    ::                  = pseudo-element
+    >                   = children
+    hover               = destaca ao passar o mouse
+    visited             = cor do link
+    active              = quando clica
+    height              = altura
+    width               = largura
+    border              = borda
+    padding             = distancia da borda ao texto 
+    margin              = distancia da borda para fora
+    outline             = contorno
+    box-level           = quebra para próxima linha
+    inline-level        = mantém na mesma linha
+    
+
+
+*/
+/*
+ * ========================================
+ * VARIAVEIS GLOBAIS (ROOT) E RESET
+ * ========================================
+*/
+:root{
+  /* Cores Principais da Marca */
+  --brand-dark: #1B1A1E;      /* Preto/Cinza Escuro */
+  --brand-accent: #C03228;    /* Vermelho acento (detalhes, botões) */
+  --brand-header-bg: #109951; /* Verde forte (usado no header) */
+  
+  /* Cores de Fundo e Texto */
+  --bg: #FFFFFF;              /* Fundo principal (branco) */
+  --bg-light: #F1F1F1;        /* Fundo alternativo (cinza claro) */
+  --text: #1B1A1E;            /* Texto principal */
+  --muted: #6B6B6B;            /* Texto secundário */
+  
+  /* Layout e Espaçamento */
+  --max-width: 1100px;
+  --gap: 1.5rem;
+  --padding-main: 1.5rem;
+}
+
+/* Reset / base */
+*{ box-sizing: border-box; }
+body{
+  font-family: "Arial", "Helvetica", sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  margin: 0;
+  line-height: 1.6; /* Aumentado para melhor legibilidade */
+}
+
+/* ========================================
+ * BOTÕES E LINKS GERAIS
+ * ========================================
+*/
+.btn-agendamento,
+.btn { 
+  display: inline-block;
+  background: var(--brand-accent);
+  color: var(--bg);
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: background 0.2s ease, transform 0.1s ease;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+}
+
+.btn-agendamento:hover,
+.btn:hover {
+  background: var(--brand-dark); 
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* ========================================
+ * HEADER (AJUSTADO PARA O NOVO BACKGROUND)
+ * ========================================
+*/
+.site-header{
+  border-bottom: 4px solid var(--brand-accent);
+  /* Aplicando o verde do código original do usuário no site-header */
+  background-color: var(--brand-header-bg); 
+}
+.header-inner{
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: var(--gap);
+  padding: 0.8rem 1rem;
+  /* Removendo background-color redundante aqui */
+}
+
+/* logo */
+.brand-logo{
+  width: 110px;
+  height: auto;
+  display: block;
+}
+
+/* central slogan */
+.header-center{
+  flex: 1;
+  text-align: center;
+}
+.tagline{
+  display: inline-block;
+  font-weight: 600;
+  color: var(--bg); /* Cor alterada para contraste no header verde */
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+}
+
+/* navegação principal */
+.main-nav{
+  display: flex;
+  gap: 0.9rem;
+  align-items: center;
+}
+.main-nav a{
+  text-decoration: none;
+  color: var(--bg); /* Cor alterada para contraste no header verde */
+  padding: 0.45rem 0.6rem;
+  font-weight: 600;
+  border-radius: 6px;
+  transition: background .12s ease, box-shadow .12s ease;
+}
+.main-nav a:hover,
+.main-nav a:focus{
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: none;
+  outline: none;
+}
+
+/* comportamento em telas pequenas */
+@media (max-width: 820px){
+  .header-inner{
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .brand-logo{ width: 90px; }
+  .header-center{ order: 3; width: 100%; text-align: center; }
+  .main-nav{ width: 100%; justify-content: center; flex-wrap: wrap; gap: .6rem; order: 2; }
+  .main-nav a{ padding: .45rem .6rem; }
+  .tagline{ font-size: .9rem; }
+}
+
+/* ========================================
+ * LAYOUT PRINCIPAL (TAG MAIN) E CONTEÚDO
+ * ========================================
+*/
+main {
+    max-width: var(--max-width);
+    margin: 2.5rem auto;
+    padding: 0 var(--padding-main);
+    min-height: 60vh; /* Garante que o footer fique na parte inferior */
+}
+
+/* Títulos de Serviço */
+main h1 {
+    font-size: 2.2rem;
+    color: var(--brand-dark);
+    margin-bottom: var(--gap);
+    border-bottom: 2px solid var(--brand-accent);
+    padding-bottom: 0.5rem;
+    line-height: 1.2;
+}
+
+/* Imagem de Serviço no Conteúdo (float) */
+main div > img { /* Target img inside the wrapper div */
+    float: left;
+    margin-right: var(--gap);
+    margin-bottom: 1rem;
+    width: 15%; 
+    min-width: 80px;
+    max-width: 120px;
+    border-radius: 8px;
+    object-fit: contain;
+}
+
+/* Limpa o float no container */
+main div {
+    overflow: auto; 
+    padding-bottom: 1rem;
+}
+
+/* Lista de Objetivos (UL) */
+main ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 2rem;
+}
+main ul li {
+    margin: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+    color: var(--text);
+}
+main ul li::before {
+    content: "✔️"; /* Ícone de checkmark */
+    position: absolute;
+    left: 0;
+    color: var(--brand-accent);
+    font-weight: 600;
+}
+
+/* Estilo para links de subcategorias (nas páginas *home.html*) */
+.service-category-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.service-category-links h3 {
+    margin: 0;
+    padding: 0;
+}
+
+.service-category-links a {
+    display: block;
+    text-align: center;
+    padding: 1.5rem;
+    background: var(--bg-light);
+    border-radius: 10px;
+    text-decoration: none;
+    color: var(--brand-dark);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.service-category-links a:hover {
+    transform: translateY(-5px);
+    background: rgba(192, 50, 40, 0.05);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.service-category-links a img {
+    display: block;
+    margin: 0 auto 0.5rem;
+    width: 60px;
+    height: auto;
+}
+
+
+/* ========================================
+ * FORMULÁRIO DE AGENDAMENTO
+ * ========================================
+*/
+.agendamento-form-container {
+    padding: 2rem;
+    background-color: var(--bg-light);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.agendamento-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.agendamento-form h1 {
+    text-align: center;
+    color: var(--brand-dark);
+    border-bottom: 3px solid var(--brand-accent);
+    padding-bottom: 0.5rem;
+}
+
+.agendamento-form p {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: var(--muted);
+}
+
+fieldset {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 0;
+}
+
+legend {
+    font-weight: 700;
+    color: var(--brand-accent);
+    font-size: 1.1rem;
+    padding: 0 0.5rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--brand-accent);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(192, 50, 40, 0.1);
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.form-group small {
+    display: block;
+    margin-top: 0.2rem;
+    color: var(--muted);
+    font-size: 0.85rem;
+}
+
+.form-actions {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.btn-submit {
+    font-size: 1.1rem;
+}
+
+/* Responsividade do Formulário (Duas colunas em telas maiores) */
+@media (min-width: 600px) {
+    fieldset {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem 2rem;
+    }
+    /* Campos que devem ocupar 100% da largura em seu fieldset */
+    fieldset:nth-of-type(3) .form-group:nth-child(2) { /* Detalhes do Serviço */
+        grid-column: 1 / -1; 
+    }
+    fieldset:nth-of-type(1) .form-group:nth-child(3) { /* Email */
+        grid-column: 1 / -1; 
+    }
+    .form-actions {
+        grid-column: 1 / -1;
+    }
+}
+
+
+/* ========================================
+ * LOJA DE PEÇAS (CORRIGIDO)
+ * ========================================
+*/
+
+.pecas-section{
+  max-width: var(--max-width);
+  margin: 3rem auto;
+  padding: 0 1rem;
+}
+
+.pecas-section h2{
+  text-align: center;
+  color: var(--brand-dark);
+  margin-bottom: 2rem;
+  font-size: 1.8rem;
+  border-bottom: 3px solid var(--brand-accent);
+  display: inline-block;
+  padding-bottom: 0.3rem;
+}
+
+.tabela_pecas{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--gap);
+}
+
+.peca-card{
+  background: var(--bg-light);
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  padding: 1.2rem;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.peca-card:hover{
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+}
+
+.peca-card h3{
+  margin-top: 0;
+  color: var(--brand-dark);
+  font-size: 1.2rem;
+  border-bottom: 2px solid var(--brand-accent);
+  padding-bottom: 0.3rem;
+}
+
+.peca-card p{
+  margin: 0.4rem 0;
+  color: var(--text);
+}
+
+.peca-card strong{
+  color: var(--brand-dark);
+}
+
+.peca-card .btn{
+  display: block; /* Alterado para block para preencher o card */
+  margin-top: 0.8rem;
+}
+
+/* ========================================
+ * FOOTER
+ * ========================================
+*/
+.site-footer{
+  background-color: var(--brand-dark);
+  color: #f1f1f1;
+  padding: 2rem 1rem 1rem;
+  border-top: 4px solid var(--brand-accent);
+  font-size: 0.95rem;
+}
+
+.footer-inner{
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: space-between;
+}
+
+.footer-col{
+  flex: 1 1 220px;
+  min-width: 200px;
+}
+
+.footer-logo{
+  width: 100px;
+  margin-bottom: 0.6rem;
+}
+
+.footer-col h3{
+  color: var(--brand-accent);
+  margin-bottom: 0.6rem;
+  font-size: 1.1rem;
+}
+
+.footer-links{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li{
+  margin: 0.3rem 0;
+}
+
+.footer-links a{
+  color: #fff;
+  text-decoration: none;
+  transition: color .2s ease;
+}
+
+.footer-links a:hover{
+  color: var(--brand-accent);
+}
+
+.footer-bottom{
+  text-align: center;
+  border-top: 1px solid rgba(255,255,255,0.15);
+  margin-top: 1.5rem;
+  padding-top: 0.8rem;
+  font-size: 0.85rem;
+  color: #ccc;
+}
+
+/* Responsivo */
+@media (max-width: 720px){
+  .footer-inner{
+    flex-direction: column;
+    text-align: center;
+  }
+  .footer-logo{
+    margin: 0 auto 0.8rem;
+  }
+}
+ /* Estilo para links de subcategorias (nas páginas *home.html* e em nossos-servicos.html) */
+.service-category-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Faz o layout de grade */
+    gap: 2rem;
+    margin-top: 2rem;
+}
+/* Fundo escuro do Modal (Pop-up) */
+.modal {
+    display: none; /* Começa escondido */
+    position: fixed; /* Fica fixo na tela */
+    z-index: 1000; /* Fica por cima de todos os outros elementos */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Fundo preto semi-transparente */
+    align-items: center;
+    justify-content: center;
+}
+
+/* Caixa do formulário */
+.modal-content {
+    background: #1f2937; /* Cor baseada no seu tema escuro */
+    padding: 30px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+/* Botão de Fechar (o 'X') */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    color: #cbd5e1;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-btn:hover {
+    color: #ef4444; /* Fica vermelho ao passar o mouse */
+}
+
+/* Inputs do modal */
+.modal-content input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+/* Botão de Entrar */
+.btn-login {
+    width: 100%;
+    background: #22c55e;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.btn-login:hover {
+    background: #16a34a;
+}
+
+/* ========================================
+ * MENU DROPDOWN (CADASTRAR)
+ * ======================================== */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #ffffff;
+    min-width: 180px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 999;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.dropdown-content a {
+    color: #333333 !important;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 15px;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+    color: #008000 !important;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* ========================================
+ * FORMULÁRIOS DE CADASTRO
+ * ======================================== */
+.form-container {
+    background-color: #f4f4f4;
+    border-radius: 12px;
+    padding: 40px;
+    margin-bottom: 50px;
+}
+
+.main-title {
+    border-bottom: 2px solid #888;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #333;
+}
+
+.section-title {
+    color: #b32400;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-bottom: 1px solid #b32400;
+    padding-bottom: 5px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+/* ========================================
+ * ESTILO DO SLOGAN (TAGLINE) NO CABEÇALHO
+ * ======================================== */
+.header-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1; /* Permite que a frase ocupe o espaço livre entre a logo e o menu */
+    padding: 0 15px;
+}
+
+.tagline {
+    color: #ffffff; /* Letra branca para contrastar perfeitamente com o fundo */
+    font-size: 15px; /* Tamanho agradável, nem muito grande, nem pequeno */
+    font-style: italic; /* Deixa com cara de slogan/assinatura da marca */
+    font-weight: 500; /* Levemente mais gordinha para facilitar a leitura */
+    letter-spacing: 1px; /* Dá um leve respiro entre as letras */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4); /* Sombra suave para destacar do fundo */
+    opacity: 0.95;
+    text-align: center;
+}
+
+/* Regra para celulares: Oculta a frase em telas muito pequenas para não espremer o menu e a logo */
+@media (max-width: 768px) {
+    .tagline {
+        display: none;
+    }
+}
+
+/* ========================================
+ * NOVA BARRA DO SLOGAN (ABAIXO DO MENU)
+ * ======================================== */
+.header-slogan-bar {
+    background-color: rgba(0, 0, 0, 0.15); /* Cria uma faixa levemente mais escura para dar destaque */
+    text-align: center;
+    padding: 6px 10px;
+    width: 100%;
+    border-top: 1px solid rgba(255, 255, 255, 0.1); /* Linha divisória bem suave */
+}
+
+.tagline {
+    color: #ffffff !important;
+    font-size: 14px;
+    font-style: italic;
+    font-weight: 500;
+    letter-spacing: 1.2px; /* Espaçamento moderno entre as letras */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+    margin: 0;
+    display: block;
+}
