@@ -17,7 +17,7 @@ $resultado = $conexao->query($sql);
 <body>
     <header class="site-header" style="padding: 15px; background: #109951; text-align: center; color: white;">
         <h2>Jacaré Mecânica - Painel de Controle</h2>
-        <a href="index.html" class="btn btn-light mt-2">Voltar ao Site</a>
+        <a href="cadastro-colaboradores.html" class="btn btn-light mt-2 fw-bold">Voltar ao Cadastro de Colaborador</a>
     </header>
 
     <div class="container mt-5">

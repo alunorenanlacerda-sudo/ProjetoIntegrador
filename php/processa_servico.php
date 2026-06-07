@@ -1,38 +1,22 @@
 <?php
-// 1. Conecta com o banco
-include 'conecta.php';
+include 'conexao.php';
 
-// 2. Pega os dados do formulário
 $nome_servico = $_POST['nome_servico'];
 $descricao = $_POST['descricao'];
 $preco_base = $_POST['preco_base'];
 $tempo_estimado = $_POST['tempo_estimado'];
-$placa = $_POST['placa'];
 
+$sql = "INSERT INTO servicos (nome_servico, descricao, preco_base, tempo_estimado) 
+        VALUES ('$nome_servico', '$descricao', '$preco_base', '$tempo_estimado')";
 
-// 3. Prepara o SQL de inserção
-$sql = "INSERT INTO servicos (nome_servico, descricao, preco_base, tempo_estimado, placa) 
-        VALUES (:nome_servico, :descricao, :preco_base, :tempo_estimado, :placa)";
-
-try {
-    // 4. Executa a inserção com segurança
-    $stmt = $pdo->prepare($sql);
-    
-    $stmt->bindParam(':nome_servico', $nome_servico);
-    $stmt->bindParam(':descricao', $descricao);
-    $stmt->bindParam(':preco_base', $preco_base);
-    $stmt->bindParam(':tempo_estimado', $tempo_estimado);
-    $stmt->bindParam(':placa', $placa);
-    
-    $stmt->execute();
-    
-    // 5. Redireciona de volta com mensagem de sucesso
+if ($conexao->query($sql) === TRUE) {
     echo "<script>
-            alert('Serviço adicionado ao catálogo com sucesso!');
-            window.location.href='../index.html';
+            alert('Serviço cadastrado com sucesso!');
+            window.location.href = '../listar-servicos.php';
           </script>";
-
-} catch(PDOException $e) {
-    echo "Erro ao cadastrar serviço: " . $e->getMessage();
+} else {
+    echo "Erro ao cadastrar: " . $conexao->error;
 }
+
+$conexao->close();
 ?>
